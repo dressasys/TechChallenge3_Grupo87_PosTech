@@ -1,0 +1,60 @@
+erDiagram
+
+
+    Fato_Respostas_Covid {
+        string id_respondente PK
+        string id_tempo FK
+        float peso_amostral_com_calibracao
+    }
+
+    Dim_Tempo {
+        string id_tempo PK
+        int ano
+        int mes_pesquisa
+        string nome_mes
+    }
+
+    Dim_Localidade {
+        string id_respondente PK,FK
+        int cod_uf
+        string nome_uf
+        string polo_epidemiologico
+    }
+
+    Dim_Demografia {
+        string id_respondente PK,FK
+        int idade
+        string desc_sexo
+        string desc_cor_raca
+        string faixa_etaria
+    }
+
+    Dim_Sintomas {
+        string id_respondente PK,FK
+        string desc_teve_febre
+        string desc_teve_tosse
+        string desc_dificuldade_respirar
+        string desc_perda_cheiro_sabor
+    }
+
+    Dim_Comportamento {
+        string id_respondente PK,FK
+        string desc_buscou_atendimento
+        string desc_medida_isolamento
+    }
+
+    Dim_Economia {
+        string id_respondente PK,FK
+        string desc_trabalhou_semana
+        string desc_trabalho_remoto
+        string desc_auxilio_emergencial
+        float rendimento_efetivo
+        string desc_condicao_domicilio
+    }
+
+    Fato_Respostas_Covid ||--o{ Dim_Tempo : references
+    Fato_Respostas_Covid ||--o{ Dim_Localidade : references
+    Fato_Respostas_Covid ||--o{ Dim_Demografia : references
+    Fato_Respostas_Covid ||--o{ Dim_Sintomas : references
+    Fato_Respostas_Covid ||--o{ Dim_Comportamento : references
+    Fato_Respostas_Covid ||--o{ Dim_Economia : references
